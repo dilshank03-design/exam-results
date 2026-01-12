@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>විභාග ලකුණු පරීක්ෂා කිරීම</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f2f2f2;
+            text-align: center;
+            padding-top: 50px;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 5px;
+        }
+        .result {
+            background: white;
+            width: 300px;
+            margin: 20px auto;
+            padding: 15px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>විභාග ලකුණු පරීක්ෂා කිරීම</h2>
+    <h2>BASTIAN SILVA COLLEGE</h2>
+
+    <input type="text" id="examNo" placeholder="විභාග අංකය">
+    <br>
+    <button onclick="searchResult()">Search</button>
+
+    <div id="output"></div>
+
+    <script>
+        const results = [
+            { examNo: "101", name: "කවිඳු", maths: 85, sinhala: 78, science: 82 },
+            { examNo: "102", name: "නිමාලි", maths: 72, sinhala: 88, science: 79 },
+            { examNo: "103", name: "සහන්", maths: 90, sinhala: 81, science: 86 },
+	    { examNo: "105", name: "KAVINDA", maths: 72, sinhala: 88, science: 79 },
+        ];
+
+        function searchResult() {
+            let examNo = document.getElementById("examNo").value;
+            let output = document.getElementById("output");
+            output.innerHTML = "";
+
+            let student = results.find(s => s.examNo === examNo);
+
+            if (student) {
+                output.innerHTML = `
+                    <div class="result">
+                        <h3>${student.name}</h3>
+                        <p>ගණිතය: ${student.maths}</p>
+                        <p>සිංහල: ${student.sinhala}</p>
+                        <p>විද්‍යාව: ${student.science}</p>
+                    </div>
+                `;
+            } else {
+                output.innerHTML = "<p>මෙම විභාග අංකයට දත්ත නොමැත</p>";
+            }
+        }
+    </script>
+
+</body>
+</html>
